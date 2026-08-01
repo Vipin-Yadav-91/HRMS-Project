@@ -1,0 +1,127 @@
+/* Container Box */
+.login-card-box {
+    border-radius: 20px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    width: 100%;
+}
+
+/* Left Blue Side (Desktop par 50% width) */
+.login-left-side {
+    background: linear-gradient(135deg, #1d4ed8, #2563eb) !important;
+    width: 50%;
+}
+
+/* Right Form Side (Desktop par 50% width) */
+.login-right-side {
+    background: #ffffff;
+    width: 50%;
+}
+
+/* Mobile Screens Par Ek Ke Niche Ek Aayenge */
+@media (max-width: 767.98px) {
+    .login-left-side, .login-right-side {
+        width: 100% !important;
+    }
+}
+
+/* Zoom Hover Effect */
+.zoom-hover {
+    transition: transform 0.3s ease-in-out !important;
+}
+
+.zoom-hover:hover {
+    transform: translateY(-4px) !important;
+    z-index: 2 !important;
+}
+
+/* Input Fields */
+.bgi {
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+}
+
+.bgi:focus {
+    background-color: #ffffff;
+    box-shadow: none;
+    border-color: #2563eb;
+}
+
+/* Shield Icon Box */
+.shield-box {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================================================================ */
+
+/* body{
+    background-color:white ;
+}
+.login-left{
+    height: 500px;
+    margin-left:50px;
+    
+    background-color: rgb(84, 84, 239);
+    border-radius: 30px 0px 0px 30px;
+    box-shadow:2px 2px 2px lightgray;
+        transition: 0.3s ease;
+    cursor: pointer;
+}
+.login-left:hover{
+    transform: scale(0.95);
+      border-radius:30px 30px 30px 30px ;
+
+}
+
+
+.login-right{
+    height: 500px;
+    
+    background-color: white;
+    border-radius: 0px 30px 30px 0px;
+        box-shadow:2px 2px 2px lightgray;
+
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+.login-right:hover{
+    transform: scale(0.95);
+    border-radius:30px 30px 30px 30px ;
+
+}
+
+.class-vip{
+    background-color: white;
+        box-shadow:3px 5px 3px lightgray;
+
+
+}
+
+.bgi{
+    background-color: whitesmoke;
+}
+.btn{
+    width: 450px;
+}
+.shield{
+    background-color: rgb(125, 135, 245);
+    border-radius: 10px 10px 10px;
+   
+    
+} */

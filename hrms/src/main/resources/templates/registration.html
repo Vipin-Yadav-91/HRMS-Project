@@ -1,0 +1,500 @@
+<html lang="en" th:replace="~{base::layout(~{::main})}">
+<body>
+<main style="width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important;">
+
+<!-- Embedded Internal CSS for Exact Chrome Rendering & Hover Animation -->
+<style>
+  .register-page-wrapper {
+    background-color: #f8fafc;
+    padding: 40px 20px 60px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    min-height: 90vh;
+  }
+
+  .main-register-card {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto 50px;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Left Gradient Banner */
+  .left-banner {
+    flex: 1;
+    background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #7c3aed 100%);
+    color: #ffffff;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .banner-pill {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+
+  .banner-title {
+    font-size: 38px;
+    font-weight: 800;
+    margin: 0 0 16px;
+    line-height: 1.2;
+  }
+
+  .banner-desc {
+    font-size: 14px;
+    color: #e0e7ff;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  .banner-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tag-item {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    width: fit-content;
+  }
+
+  /* Right Side Registration Form */
+  .right-form-card {
+    flex: 1.3;
+    padding: 40px;
+    background: #ffffff;
+  }
+
+  .form-header-icon {
+    width: 50px;
+    height: 50px;
+    background: #eff6ff;
+    color: #2563eb;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 12px;
+  }
+
+  .form-main-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    text-align: center;
+    margin: 0 0 6px;
+  }
+
+  .form-sub-title {
+    font-size: 13px;
+    color: #64748b;
+    text-align: center;
+    margin: 0 0 24px;
+  }
+
+  /* Form Layout Grid */
+  .form-grid-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .form-group-item {
+    flex: 1;
+  }
+
+  .form-label-custom {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 6px;
+  }
+
+  .input-icon-wrapper {
+    position: relative;
+  }
+
+  .input-icon-wrapper span {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 15px;
+  }
+
+  .custom-input-field {
+    width: 100%;
+    height: 44px;
+    padding: 0 14px 0 40px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #0f172a;
+    background-color: #ffffff;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+  }
+
+  .custom-select-field {
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #0f172a;
+    outline: none;
+    background-color: #ffffff;
+    box-sizing: border-box;
+  }
+
+  textarea.custom-input-field {
+    height: 70px;
+    padding: 10px 14px 10px 40px;
+    resize: vertical;
+  }
+
+  /* Input Hover & Focus */
+  .custom-input-field:hover, .custom-select-field:hover {
+    border-color: #94a3b8;
+  }
+
+  .custom-input-field:focus, .custom-select-field:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  }
+
+  /* Radio Option Styling */
+  .radio-group-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    background-color: #ffffff;
+    font-size: 13px;
+  }
+
+  /* Security Note */
+  .security-badge {
+    background-color: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #047857;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 20px 0;
+  }
+
+  /* Buttons */
+  .btn-submit-register {
+    background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+    color: #ffffff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    transition: all 0.25s ease;
+  }
+
+  .btn-submit-register:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45);
+  }
+
+  .btn-login-outline {
+    text-decoration: none;
+    color: #2563eb;
+    border: 1.5px solid #2563eb;
+    padding: 10px 24px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .btn-login-outline:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+  }
+
+  /* Success Message Alert */
+  .msg-alert-box {
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1d4ed8;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* Bottom Why Register Feature Grid */
+  .features-section-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 30px;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .feature-card {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  /* Feature Box Hover Effect */
+  .feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(37, 99, 235, 0.12);
+  }
+
+  .feature-icon-box {
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(135deg, #2563eb 0%, #6366f1 100%);
+    color: #ffffff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    font-size: 20px;
+  }
+
+  .feature-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+  }
+
+  @media (max-width: 850px) {
+    .main-register-card {
+      flex-direction: column;
+    }
+    .form-grid-row {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+</style>
+
+<div class="register-page-wrapper">
+  
+  <!-- Main Registration Card Container -->
+  <div class="main-register-card">
+    
+    <!-- Left Banner -->
+    <div class="left-banner">
+      <span class="banner-pill">👥 HR Synergy Careers</span>
+      <h1 class="banner-title">Join HR Synergy</h1>
+      <p class="banner-desc">
+        Start your professional journey with HR Synergy. Register today to explore exciting career opportunities, apply for jobs, and build your future with us.
+      </p>
+      <div class="banner-tags">
+        <span class="tag-item">📈 Career Growth</span>
+        <span class="tag-item">👥 Professional Team</span>
+        <span class="tag-item">🎓 Learning Opportunities</span>
+        <span class="tag-item">🏢 Modern Workplace</span>
+      </div>
+    </div>
+
+    <!-- Right Side Form Panel -->
+    <div class="right-form-card">
+      
+      <div class="form-header-icon">👤</div>
+      <h2 class="form-main-title">Candidate Registration</h2>
+      <p class="form-sub-title">Create your candidate account and become part of HR Synergy.</p>
+
+      <!-- Message Alert -->
+      <div th:if="${msg}" class="msg-alert-box">
+        <span th:text="${msg}"></span>
+      </div>
+
+      <!-- Spring Boot Form (All Original Methods and Field Bindings Intact) -->
+      <form method="post" th:object="${udto}">
+        
+        <!-- Row 1: Name & Gender -->
+        <div class="form-grid-row">
+          <div class="form-group-item">
+            <label class="form-label-custom">Name</label>
+            <div class="input-icon-wrapper">
+              <span>👤</span>
+              <input type="text" th:field="${udto.name}" class="custom-input-field" required placeholder="Full Name" />
+            </div>
+          </div>
+
+          <div class="form-group-item">
+            <label class="form-label-custom">Gender</label>
+            <div class="radio-group-container">
+              <label><input type="radio" th:field="${udto.gender}" value="Male" class="form-check-input" required /> Male</label>
+              <label><input type="radio" th:field="${udto.gender}" value="Female" class="form-check-input" required /> Female</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Email & Password -->
+        <div class="form-grid-row">
+          <div class="form-group-item">
+            <label class="form-label-custom">Email Address</label>
+            <div class="input-icon-wrapper">
+              <span>✉️</span>
+              <input type="email" th:field="${udto.emailaddress}" class="custom-input-field" required placeholder="Email Address" />
+            </div>
+          </div>
+
+          <div class="form-group-item">
+            <label class="form-label-custom">Password</label>
+            <div class="input-icon-wrapper">
+              <span>🔒</span>
+              <input type="password" th:field="${udto.password}" class="custom-input-field" required placeholder="Password" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: Contact No & Qualification -->
+        <div class="form-grid-row">
+          <div class="form-group-item">
+            <label class="form-label-custom">Contact No</label>
+            <div class="input-icon-wrapper">
+              <span>📞</span>
+              <input type="number" th:field="${udto.contactno}" class="custom-input-field" required placeholder="Contact Number" />
+            </div>
+          </div>
+
+          <div class="form-group-item">
+            <label class="form-label-custom">Qualification</label>
+            <div class="input-icon-wrapper">
+              <span>🎓</span>
+              <input type="text" th:field="${udto.qualification}" class="custom-input-field" required placeholder="Qualification" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 4: Experience -->
+        <div class="form-grid-row">
+          <div class="form-group-item">
+            <label class="form-label-custom">Experience</label>
+            <div class="input-icon-wrapper">
+              <span>💼</span>
+              <input type="text" th:field="${udto.experience}" class="custom-input-field" required placeholder="Fresher / 1 Year" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 5: Key Skills -->
+        <div class="form-group-item" style="margin-bottom: 16px;">
+          <label class="form-label-custom">Key Skills</label>
+          <div class="input-icon-wrapper">
+            <span style="top:22px;">💻</span>
+            <textarea th:field="${udto.keyskill}" class="custom-input-field" required placeholder="Java, Spring Boot, SQL, etc."></textarea>
+          </div>
+        </div>
+
+        <!-- Row 6: Address -->
+        <div class="form-group-item" style="margin-bottom: 16px;">
+          <label class="form-label-custom">Address</label>
+          <div class="input-icon-wrapper">
+            <span style="top:22px;">🏠</span>
+            <textarea th:field="${udto.address}" class="custom-input-field" required placeholder="Complete Address"></textarea>
+          </div>
+        </div>
+
+        <!-- Security Badge -->
+        <div class="security-badge">
+          🛡️ Your personal information is securely protected.
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display: flex; gap: 14px; justify-content: center; align-items: center; margin-top: 20px;">
+          <button type="submit" class="btn-submit-register">👤 Register</button>
+          <a href="/login" class="btn-login-outline">➔ Login</a>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <!-- Bottom "Why Register" Feature Cards Section with Hover -->
+  <h3 class="features-section-title">Why Register with HR Synergy?</h3>
+  
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon-box">💼</div>
+      <h4>Latest Job Opportunities</h4>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon-box">🚀</div>
+      <h4>Easy Job Applications</h4>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon-box">📋</div>
+      <h4>Application Tracking</h4>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon-box">🛡️</div>
+      <h4>Secure Candidate Profile</h4>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon-box">🔔</div>
+      <h4>Interview Notifications</h4>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon-box">🚀</div>
+      <h4>Career Development</h4>
+    </div>
+  </div>
+</div>
+</main>
+</body>
+</html>

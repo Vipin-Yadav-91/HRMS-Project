@@ -1,0 +1,174 @@
+<!--  <html lang="en" th:replace="~{user/userbase :: layout(~{::main})}">
+<body>
+ <main>
+ 	<h2 style="color:blue; text-align:center;">View Your Profile</h2>
+ 	<hr/>
+ 	<table class ="table table-bordered" style="width:80%;margin:auto;">
+ 	<tr>
+ 	<td>Name</td>
+ 	<td th:text="${user.name}"></td>
+ 	</tr>
+ 	
+ 	<tr>
+ 	<td>Contact No</td>
+ 	<td th:text="${user.contactno}"></td>
+ 	</tr>
+ 	
+ 	<tr>
+ 	<td>Email Address</td>
+ 	<td th:text="${user.emailaddress}"></td>
+ 	</tr>
+ 	
+ 	<tr>
+ 	<td>Qualification</td>
+ 	<td th:text="${user.qualification}"></td>
+ 	</tr>
+ 	
+ 	<tr>
+ 	<td>Experience</td>
+ 	<td th:text="${user.experience}"></td>
+ 	</tr>
+ 	
+ 	<tr>
+ 	<td>Keyskills</td>
+ 	<td th:text="${user.keyskill}"></td>
+ 	</tr>
+ 	
+ 	<tr>
+ 	<td>Address</td>
+ 	<td th:text="${user.address}"></td>
+ 	</tr>
+ 	</table>
+ </main>
+</body>
+</html>
+
+ -->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <html lang="en" th:replace="~{user/userbase :: layout(~{::main})}">
+<body>
+ <main class="py-4">
+  <!-- Font Awesome CDN (Icons load karne ke liye) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Sirf Gradient Header aur Yellow Button ke liye minimal CSS -->
+  <style>
+    .bg-gradient-header {
+      background: linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%);
+    }
+    .btn-warning-custom {
+      background-color: #eab308;
+      color: white;
+    }
+    .btn-warning-custom:hover {
+      background-color: #ca8a04;
+      color: white;
+    }
+  </style>
+
+  <div class="container" style="max-width: 850px;">
+    <div class="card border-0 shadow-lg rounded-2 overflow-hidden">
+      
+      <!-- Gradient Header with Top-Right User Icon -->
+      <div class="card-header bg-gradient-header text-white p-4 d-flex justify-content-between align-items-center border-0">
+        <div>
+          <h2 class="h3 fw-bold mb-1">Candidate Profile</h2>
+          <p class="mb-0 opacity-75 small">View and manage your personal information.</p>
+        </div>
+        <div class="bg-white rounded-circle d-flex align-items-center justify-content-center text-primary shadow-sm" style="width: 50px; height: 50px; font-size: 22px; flex-shrink: 0;">
+          <i class="fa-solid fa-user"></i>
+        </div>
+      </div>
+
+      <!-- Main Profile Fields (Bootstrap Row & Grid System) -->
+      <div class="card-body p-4 bg-white">
+        <div class="row g-3">
+          
+          <div class="col-md-6">
+            <div class="border rounded-3 p-2 px-3 h-100">
+              <small class="text-muted d-block fw-semibold mb-1" style="font-size: 11.5px;">Full Name</small>
+              <div class="fw-bold text-dark" style="font-size: 14.5px;" th:text="${user.name}">Ashish Singh</div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="border rounded-3 p-2 px-3 h-100">
+              <small class="text-muted d-block fw-semibold mb-1" style="font-size: 11.5px;">Contact Number</small>
+              <div class="fw-bold text-dark" style="font-size: 14.5px;" th:text="${user.contactno}">1111111111</div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="border rounded-3 p-2 px-3 h-100">
+              <small class="text-muted d-block fw-semibold mb-1" style="font-size: 11.5px;">Email Address</small>
+              <div class="fw-bold text-dark" style="font-size: 14.5px;" th:text="${user.emailaddress}">ashish@gmail.com</div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="border rounded-3 p-2 px-3 h-100">
+              <small class="text-muted d-block fw-semibold mb-1" style="font-size: 11.5px;">Qualification</small>
+              <div class="fw-bold text-dark" style="font-size: 14.5px;" th:text="${user.qualification}">Btech</div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="border rounded-3 p-2 px-3 h-100">
+              <small class="text-muted d-block fw-semibold mb-1" style="font-size: 11.5px;">Experience</small>
+              <div class="fw-bold text-dark" style="font-size: 14.5px;" th:text="${user.experience}">2</div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="border rounded-3 p-2 px-3 h-100">
+              <small class="text-muted d-block fw-semibold mb-1" style="font-size: 11.5px;">Key Skills</small>
+              <div class="fw-bold text-dark" style="font-size: 14.5px;" th:text="${user.keyskill}">Python, Django</div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="border rounded-3 p-2 px-3">
+              <small class="text-muted d-block fw-semibold mb-1" style="font-size: 11.5px;">Address</small>
+              <div class="fw-bold text-dark" style="font-size: 14.5px;" th:text="${user.address}">vill-shuklaha bharuhana post-mahuaria dist-mirzapur</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Action Buttons (Pure Bootstrap Utilities) -->
+        <div class="d-flex justify-content-center gap-2 mt-4 pt-2">
+          <a href="#" class="btn btn-primary rounded-pill px-4 fw-semibold"><i class="fa-solid fa-pen-to-square me-1"></i> Edit Profile</a>
+          <a href="/user/changepwd" class="btn btn-warning-custom rounded-pill px-4 fw-semibold"><i class="fa-solid fa-key me-1"></i> Change Password</a>
+          <a href="/user/userdash" class="btn btn-secondary rounded-pill px-4 fw-semibold"><i class="fa-solid fa-arrow-left me-1"></i> Back</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+ </main>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<html lang="en" th:replace="~{base::layout(~{::main})}">
+<body>
+<main>
+
+<style>
+  /* Minimal CSS for Hover & SVG Placement */
+  .custom-input:focus { border-color: #2563eb !important; background: #fff !important; }
+  .submit-btn:hover { background-color: #1d4ed8 !important; }
+</style>
+
+<section style="display: flex; justify-content: center; align-items: center; padding: 40px 20px; min-height: 85vh; background: #f8fafc; font-family: sans-serif;">
+  
+  <!-- Main Card -->
+  <div style="display: flex; width: 100%; max-width: 850px; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+    
+    <!-- Left Section -->
+    <div style="flex: 1; background: #1d4ed8; color: #fff; padding: 40px; display: flex; flex-direction: column; justify-content: center;">
+      <h1 style="font-size: 32px; margin: 0 0 12px 0;">Welcome back</h1>
+      <p style="font-size: 14px; opacity: 0.9; margin: 0; line-height: 1.5;">
+        Manage your workspace, track your team and stay on top of everything that matters.
+      </p>
+    </div>
+
+    <!-- Right Section -->
+    <div style="flex: 1; padding: 40px; background: #fff;">
+      
+      <h3 style="font-size: 30px; margin: 0 0 6px 0; color: #1e293b;">Admin Login</h3>
+      <p style="font-size: 13px; color: #64748b; margin: 0 0 24px 0;">Enter your credentials to continue</p>
+
+      <!-- Message Alert -->
+      <div th:if="${msg}" style="background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; padding: 10px; border-radius: 6px; margin-bottom: 16px; font-size: 13px;">
+        <p th:text="${msg}" style="margin: 0;"></p>
+      </div>
+
+      <form method="post" th:object="${aidto}">
+        
+        <!-- Email Input -->
+        <div style="margin-bottom: 18px;">
+          <label style="display: block; font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 6px;">Email Address</label>
+          <div style="position: relative;">
+            <svg style="position: absolute; left: 12px; top: 12px; width: 18px; height: 18px; fill: none; stroke: #64748b; stroke-width: 2;" viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <input type="email" th:field="${aidto.adminid}" name="emailaddress" class="custom-input" required placeholder="Enter Your Email"
+                   style="width: 100%; height: 42px; padding-left: 40px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; outline: none; background: #f8fafc; box-sizing: border-box;" />
+          </div>
+        </div>
+
+        <!-- Password Input -->
+        <div style="margin-bottom: 24px;">
+          <label style="display: block; font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 6px;">Password</label>
+          <div style="position: relative;">
+            <svg style="position: absolute; left: 12px; top: 12px; width: 18px; height: 18px; fill: none; stroke: #64748b; stroke-width: 2;" viewBox="0 0 24 24">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <input type="password" th:field="${aidto.password}" name="password" class="custom-input" required placeholder="Enter Your password"
+                   style="width: 100%; height: 42px; padding-left: 40px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; outline: none; background: #f8fafc; box-sizing: border-box;" />
+          </div>
+        </div>
+
+        <!-- Button -->
+        <button type="submit" class="submit-btn"
+                style="width: 100%; height: 44px; background: #2563eb; color: #fff; border: none; border-radius: 22px; font-size: 15px; font-weight: 600; cursor: pointer;">
+          Login &rarr;
+        </button>
+
+      </form>
+      
+    </div>
+
+  </div>
+
+</section>
+</main>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--========================================================================================  -->
+
+<!-- <html lang="en" th:replace="~{base::layout(~{::main})}">
+<body>
+<main>
+<section>
+<form method="post" th:object="${aidto}" style="margin:50px auto;">
+<div th:if="${msg}" >
+<p th:text="${msg}"></p>
+</div>
+     <input type="email" th:field="${aidto.adminid}" name="emailaddress" required placeholder="Enter Your Email"/>
+     <br/>
+          <input type="password" th:field="${aidto.password}" name="password" required placeholder="Enter Your password"/>
+          <br/>
+          <button type="submit">Admin Login</button>
+     
+     </form>
+     </section>
+  </main>
+</body>
+</html> -->

@@ -1,0 +1,193 @@
+<!-- <html lang="en" th:replace="~{admin/adminbase :: layout(~{::main})}">
+<body>
+ <main>
+ 	<h1>Applied Jobs</h1>
+ 	<table class="table table bordered">
+ 	
+ 	<tr>
+ 	<th>Id</th>
+ 	<th>Job Id</th>
+ 	<th>Title</th>
+ 	<th>Name</th>
+ 	<th>Contact No</th>
+ 	<th>Email Address</th>
+ 	<th>Qualification</th>
+ 	<th>Experience</th>
+ 	<th>Key Skills</th>
+ 	<th>Applied Date</th>
+ 	</tr>
+ 	<tr th:each="j:${aj}">
+ 	<td th:text="${j.id}"></td>
+ 	<td th:text="${j.jobid}"></td>
+ 	<td th:text="${j.title}"></td>
+ 	<td th:text="${j.name}"></td>
+ 	<td th:text="${j.contactno}"></td>
+ 	<td th:text="${j.emailaddress}"></td>
+ 	<td th:text="${j.qualification}"></td>
+ 	<td th:text="${j.experience}"></td>
+ 	<td th:text="${j.keyskill}"></td>
+ 	<td th:text="${j.applieddate}"></td>
+ 	
+ 	</tr>
+ 	
+ 	</table>
+ 	<hr/>
+ 	</main>
+ 	</body>
+ 	</html> -->
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	<html lang="en" th:replace="~{admin/adminbase :: layout(~{::main})}">
+<body>
+ <main class="py-4 px-3 px-md-4">
+
+  <!-- Font Awesome Icons & Custom Styling -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    /* Top Header Gradient Banner */
+    .admin-banner {
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+      color: #ffffff;
+      border-radius: 12px;
+    }
+
+    /* Table Header Styling */
+    .table-header-gradient {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb) !important;
+      color: #ffffff !important;
+    }
+
+    /* Table Hover & Cell Alignment */
+    .custom-table tbody tr {
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .custom-table tbody tr:hover {
+      background-color: #f8fafc;
+    }
+  </style>
+
+  <div class="container-fluid p-0" style="max-width: 1350px;">
+
+    <!-- Top Blue Gradient Header Banner -->
+    <div class="admin-banner shadow-sm p-4 mb-4">
+      <div class="d-flex align-items-center gap-3">
+        <div class="bg-white bg-opacity-20 rounded-3 p-3 d-flex align-items-center justify-content-center" style="width: 54px; height: 54px;">
+          <i class="fa-solid fa-users-viewfinder fs-3 text-primary"></i>
+        </div>
+        <div>
+          <h3 class="fw-bold mb-1 text-light">Applied Jobs</h3>
+          <p class="mb-0 text-white-50 small">Track and review candidate applications for all posted job openings</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Table Container Card -->
+    <div class="card border-0 shadow-sm rounded-3 overflow-hidden mb-4">
+      
+      <!-- Card Sub-header -->
+      <div class="card-header bg-white p-3 px-4 border-bottom d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-file-user text-primary fs-5"></i>
+          <h5 class="fw-bold mb-0 text-dark fs-6">Candidate Applications</h5>
+        </div>
+      </div>
+
+      <!-- Table Wrapper (Responsive) -->
+      <div class="table-responsive">
+        <table class="table custom-table table-hover align-middle mb-0">
+          <thead>
+            <tr class="table-header-gradient text-uppercase small" style="font-size: 11px; letter-spacing: 0.5px;">
+              <th class="py-3 px-3"><i class="fa-solid fa-hashtag me-1"></i> ID</th>
+              <th class="py-3"><i class="fa-solid fa-briefcase me-1"></i> JOB ID</th>
+              <th class="py-3"><i class="fa-solid fa-user-tie me-1"></i> TITLE</th>
+              <th class="py-3"><i class="fa-solid fa-user me-1"></i> NAME</th>
+              <th class="py-3"><i class="fa-solid fa-phone me-1"></i> CONTACT NO</th>
+              <th class="py-3"><i class="fa-solid fa-envelope me-1"></i> EMAIL ADDRESS</th>
+              <th class="py-3"><i class="fa-solid fa-graduation-cap me-1"></i> QUALIFICATION</th>
+              <th class="py-3"><i class="fa-solid fa-award me-1"></i> EXPERIENCE</th>
+              <th class="py-3"><i class="fa-solid fa-code me-1"></i> KEY SKILLS</th>
+              <th class="py-3"><i class="fa-solid fa-calendar-check me-1"></i> APPLIED DATE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="j:${aj}">
+              <!-- Application ID Badge -->
+              <td class="px-3">
+                <span class="badge bg-light text-primary border rounded-2 px-3 py-2 fw-bold" th:text="${j.id}"></span>
+              </td>
+
+              <!-- Job ID Badge -->
+              <td>
+                <span class="badge bg-secondary bg-opacity-10 text-dark border border-secondary border-opacity-25 rounded-2 px-3 py-2 fw-semibold" th:text="${j.jobid}"></span>
+              </td>
+              
+              <!-- Title -->
+              <td>
+                <span class="fw-bold text-dark" th:text="${j.title}"></span>
+              </td>
+              
+              <!-- Applicant Name -->
+              <td>
+                <span class="fw-semibold text-dark" th:text="${j.name}"></span>
+              </td>
+
+              <!-- Contact Number -->
+              <td>
+                <span class="text-secondary small fw-medium">
+                  <i class="fa-solid fa-phone text-muted me-1 small"></i><span th:text="${j.contactno}"></span>
+                </span>
+              </td>
+
+              <!-- Email Address -->
+              <td>
+                <span class="text-primary small fw-medium">
+                  <i class="fa-regular fa-envelope me-1"></i><span th:text="${j.emailaddress}"></span>
+                </span>
+              </td>
+
+              <!-- Qualification -->
+              <td>
+                <span class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25 rounded-2 px-3 py-2 fw-semibold" th:text="${j.qualification}"></span>
+              </td>
+
+              <!-- Experience -->
+              <td>
+                <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 rounded-2 px-3 py-2 fw-semibold" th:text="${j.experience}"></span>
+              </td>
+
+              <!-- Key Skills -->
+              <td>
+                <span class="badge bg-warning bg-opacity-10 text-dark border border-warning border-opacity-25 rounded-2 px-3 py-2 fw-semibold" th:text="${j.keyskill}"></span>
+              </td>
+
+              <!-- Applied Date -->
+              <td>
+                <span class="text-muted small fw-medium" th:text="${j.applieddate}"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+ </main>
+</body>
+</html>

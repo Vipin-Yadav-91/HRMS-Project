@@ -1,0 +1,102 @@
+<!-- <html lang="en" th:replace="~{admin/adminbase :: layout(~{::main})}">
+<body>
+ <main>
+ 	<h1>Admin Dashboard</h1>
+ 	<div class="container-fluid">
+ 	<div class="row">
+ 	<div class="col-sm-4">
+ 	<div class="card bg-primary text-center">
+ 	<h1>Total User</h1>
+ 	<h1 th:text="${usercounter}"class="text-light"></h1>
+ 	
+ 	</div>
+ 	
+ 	</div>
+ 	
+ 	
+ 	
+ 	
+ 	<div class="col-sm-4"></div>
+ 	<div class="col-sm-4"></div>
+ 	</div>
+ 	
+ 	</div>
+ </main>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en" th:replace="~{admin/adminbase :: layout(~{::main})}">
+<body>
+ <main class="py-3">
+  <!-- Bootstrap Icons CDN Link (Isse icons aasan class name se load honge) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    /* Top Header Background Gradient */
+    .bg-gradient-header {
+      background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #8b5cf6 100%);
+    }
+    /* Total User Card Background Gradient */
+    .card-stat-user {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    }
+  </style>
+
+  <div class="container-fluid px-4" style="max-width: 1200px;">
+    
+    <!-- Top Gradient Banner for Admin Dashboard -->
+    <div class="card bg-gradient-header text-white border-0 rounded-2 shadow-sm mb-4">
+      <div class="card-body p-4 d-flex justify-content-between align-items-center">
+        
+        <div class="d-flex align-items-center gap-3">
+          <!-- Left Dashboard Icon -->
+          <div class="bg-white bg-opacity-20 rounded-2 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; flex-shrink: 0;">
+            <i class="bi bi-speedometer2 text-success fs-3"></i>
+          </div>
+          <div>
+            <h2 class="h4 fw-bold mb-1 text-white">Admin Dashboard</h2>
+            <p class="mb-0 text-white-50 small">Manage system overview and metrics</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Cards Section -->
+    <div class="row g-3">
+      
+      <!-- Total User Card -->
+      <div class="col-md-4">
+        <div class="card card-stat-user text-white border-0 rounded-2 p-3 shadow-sm">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <!-- User Icon -->
+            <div class="bg-white bg-opacity-20 rounded-2 p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+              <i class="bi bi-people-fill text-success fs-4"></i>
+            </div>
+            <span class="badge bg-white text-primary rounded-2 px-2 py-1" style="font-size: 10px;">Active Users</span>
+          </div>
+          
+          <!-- Dynamic Thymeleaf Variable -->
+          <h3 class="fw-bold mb-0 fs-1 text-light" th:text="${usercounter}">0</h3>
+          <p class="small text-white-50 text-uppercase fw-semibold mt-1 mb-0" style="font-size: 11px;">Total User</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+ </main>
+</body>
+</html>

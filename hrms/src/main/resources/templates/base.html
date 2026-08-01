@@ -1,0 +1,386 @@
+
+<html lang="en" th:fragment="layout(content)">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karam - HRMS</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.2.0/css/all.min.css"
+	integrity="sha512-nMJjQudb6RMMr08oY6YSfNlEWl1l8XWuoOwNvtWXrrgVs8MCR8AZBB1tEAO+ogiI93gXtG1XPmg+bAP5DochSA=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+	    <link rel="shortcut icon" href="/images/karam.jpeg" type="image/x-icon">
+	
+
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+<link rel="stylesheet" th:href="@{/css/index.css}"/>
+<link rel="stylesheet" th:href="@{/css/aboutus.css}" />
+<link rel="stylesheet" th:href="@{/css/contactus.css}"/>
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<link rel="stylesheet" th:href="@{/css/footer.css}" />
+
+
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Synergy - Responsive Navbar</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Logo Container: Fits any image cleanly */
+        .logo-container {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #ffffff;
+            border-radius: 8px; /* Smooth curved edges */
+        }
+
+        .logo-container img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain; /* Prevents image stretching or cropping */
+        }
+
+        /* Custom Link & Button Styling */
+        .nav-link-bold {
+            font-weight: 700;
+            color: #212529 !important;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+        }
+        .nav-link-bold:hover, .nav-link-bold.active {
+            color: #2563eb !important;
+        }
+        
+        .btn-register {
+            font-weight: 700;
+            color: #374151;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 8px 18px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .btn-register:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+        }
+
+        .btn-admin {
+            font-weight: 700;
+            color: #1d4ed8;
+            background-color: #eff6ff;
+            border: 2px solid #2563eb;
+            border-radius: 12px;
+            padding: 8px 18px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .btn-admin:hover {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+
+        .btn-login-gradient {
+            font-weight: 700;
+            color: #ffffff !important;
+            background: linear-gradient(to right, #2563eb, #4f46e5);
+            border-radius: 50px;
+            padding: 8px 24px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-login-gradient:hover {
+            background: linear-gradient(to right, #1d4ed8, #4338ca);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-light" style="min-height: 150vh;">
+
+    <!-- FIXED STICKY NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm  py-2">
+        <div class="container-fluid px-3 px-md-5">
+            
+            <!-- 1. AUTO-FITTING LOGO + BRAND TEXT -->
+            <a class="navbar-brand d-flex align-items-center gap-2.5" href="index.html">
+                <!-- Wrapper box to fit any logo size/shape -->
+                <div class="logo-container border p-1 shadow-sm">
+                    <img src="./images/logo.jpeg" alt="Logo">
+                </div>
+                <div class="d-flex flex-column">
+                    <span class="fw-bold text-primary lh-1 m-2 fs-4 tracking-tight">
+                        HR <span style="color: #4f46e5;">Synergy</span>
+                    </span>
+                    <p class="text-muted fw-semibold text-uppercase mt-1 m-2" style="font-size: 10px; letter-spacing: 0.5px;">
+                        HR Management System
+                    </p>
+                </div>
+            </a>
+
+            <!-- 2. MOBILE HAMBURGER BUTTON -->
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- 3. NAVIGATION LINKS & BUTTONS -->
+            <div class="collapse navbar-collapse" id="navbarText">
+                
+                <!-- Center Links -->
+                <ul class="navbar-nav mx-auto mb-3 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-bold active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-bold" href="/jobspage">Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-bold" href="joinuspage">Join Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-bold" href="/aboutus">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-bold" href="/contactus">Contact</a>
+                    </li>
+                </ul>
+
+                <!-- Right Action Links -->
+                <div class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center gap-2 pt-2 pt-lg-0">
+                    <a href="/registration" class="btn-register text-center">
+                        <i class="fa-solid fa-user-plus me-1 fs-6"></i> Register
+                    </a>
+
+                    <a href="/adminlogin" class="btn-admin text-center">
+                        <i class="fa-solid fa-user-shield me-1 fs-6"></i> Admin Login
+                    </a>
+
+                    <a href="/login" class="btn-login-gradient justify-content-center">
+                        <i class="fa-solid fa-right-to-bracket fs-6"></i> Login
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+ 
+
+    <!-- Bootstrap 5 JS Bundle -->
+        <script src="./js/bootstrap.bundle.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ============================================================= -->
+	<!-- <div class="container-fluid">	
+		  navbar start
+        <div class="row bg-white m-0 mt-2">
+            <div class="col-sm-2 ">
+                <nav class="navbar navbar-expand-lg py-0">
+                    <div class="container-fluid">
+                        <a class="navbar-brand px-4" href="#">
+                            <img src="./images/logo.jpeg" alt="Logo" width="30" height="24"
+                                class="d-inline-block align-text-top logo mt-2 ">
+                            <b class="text-primary ps-2 mb-0 mt-2 ">HR Synergy</b>
+                            <p class="fs-6 ps-5">HR Management System</p>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-sm-5">
+            </div>
+            <div class="col-sm-5">
+                <nav class="navbar navbar-expand">
+                    <div class="container-fluid">
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active fw-bold mt-2" href="/">Home</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link active ps-3 fw-bold mt-2" href="#">Jobs</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link active ps-3 fw-bold mt-2" href="#">Join Us</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link active ps-3 fw-bold mt-2" href="/aboutus">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active ps-3 fw-bold mt-2" href="/contactus">Contact</a>
+                                </li>
+                             <li class="nav-item">
+                                    <a href="/login" class="nav-link bg-primary fw-bold px-3 mt-2 text-light  rounded-5" aria-disabled="true">Login</a>
+                                </li> 
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        navbar end
+ -->
+		<div class="row p-0">
+			<div th:replace="${content}"></div>
+		</div>
+
+ 		<div class="row footer text-light mt-3  p-0 m-0">
+			<div class="col-sm-5">
+				<h6>
+					<p class="ms-5 fs-5 fw-bold mt-5">HR Synergy</p>
+				</h6>
+				<p class="ms-5">A mordern Human Resources Management System for
+					employees attendence, leave , payroll and recuirement Management</p>
+			</div>
+
+			<div class="col-sm-2">
+
+				<h6>
+					<p class="ms-5 fs-5 fw-bold mt-5">Quick Links</p>
+				</h6>
+				<a href="/" class="text-decoration-none text-light ps-5 pt-3">Home</a>
+				</br>
+				</br> <a href="/jobspage" class="text-decoration-none text-light ps-5 pt-3">Jobs</a>
+				</br>
+				</br> <a href="/contactus" class="text-decoration-none text-light ps-5 mt-3">Contact</a>
+
+			</div>
+
+
+			<div class="col-sm-2 text-start">
+				<h6>
+					<p class="ms-5 fs-5 fw-bold mt-5">Modeules</p>
+				</h6>
+				<a href="" class="text-decoration-none text-light  pt-3">Empolyee
+					Management</a> </br>
+				</br> <a href="" class="text-decoration-none text-light  pt-3">Attendence
+					Tracking</a> </br>
+				</br> <a href="" class="text-decoration-none text-light  mt-3">Payroll</a>
+			</div>
+
+			<div class="col-sm-3 ">
+
+
+				<h6>
+					<p class=" fs-5 fw-bold mt-5">Contact</p>
+				</h6>
+				<i class="fa-solid fa-location-dot"></i> <a href=""
+					class="text-decoration-none text-light mt-3">Maharajganj, Uttar
+					Pradesh</a></br>
+				</br> <i class="fa-solid fa-envelope"></i> <a href=""
+					class="text-decoration-none text-light">vipin9120308330@gmail.com</a>
+				<br />
+				<br /> <i class="fa-solid fa-phone"></i> <a href=""
+					class="text-decoration-none text-light mt-3">+91 91020308330</a>
+			</div>
+		</div>
+
+		<!-- Footer End -->
+
+		<div class="row bg-primary text-center py-2 mt-2">
+			<div class="col-sm-12">
+
+				&copy; HR Synergy All Rights are Reserved Developed By <Span
+					class="text-light">Er. Vipin Yadav</Span>
+
+			</div>
+		</div>
+
+
+
+
+	</div>
+
+
+<script>
+   window.addEventListener("pageshow",function (event){
+   if (event.persisted || performance.getEntriesByType("navigation") [0]?.type === "back_forward"){
+      window.location.reload();
+  }
+});
+</script>
+
+
+	<script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+</body>
+</html>
+
+
+
+<!--  <div class="row mt-2">
+    <div  class="col-sm-12">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">HRMS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/aboutus">About Us</a>
+        </li>
+         
+        <li class="nav-item">
+          <a class="nav-link" href="/registration">Registration</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="/adminlogin">AdminLogin</a>
+        </li>
+         
+        <li class="nav-item">
+          <a class="nav-link" href="/contactus">Contact Us</a>
+        </li>
+        
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+    </div>
+    </div> -->

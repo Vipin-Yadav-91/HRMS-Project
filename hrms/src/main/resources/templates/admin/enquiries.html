@@ -1,0 +1,207 @@
+<html lang="en" th:replace="~{admin/adminbase :: layout(~{::main})}">
+<body>
+ <main style="width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important;">
+
+<style>
+  .enquiry-page-container {
+    padding: 30px 20px;
+    background-color: #f8fafc;
+    min-height: 90vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .max-width-holder {
+    max-width: 1150px;
+    margin: 0 auto;
+  }
+
+  /* Header Banner Styling */
+  .page-header-banner {
+    background: #4f46e5;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: #ffffff;
+    padding: 24px 30px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 20px rgba(124, 58, 237, 0.15);
+  }
+
+  /* Stats Grid Styling */
+  .stats-grid {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    flex: 1;
+    min-width: 200px;
+    padding: 20px 24px;
+    border-radius: 16px;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .stat-number {
+    font-size: 30px;
+    font-weight: 800;
+    margin: 0 0 2px 0;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+    opacity: 0.95;
+  }
+
+  /* White Card Table Section */
+  .table-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .table-responsive-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  /* Custom Table Styling */
+  .custom-enquiry-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  .custom-enquiry-table th {
+    background: #6366f1;
+    background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
+    color: #ffffff;
+    padding: 14px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: left;
+  }
+
+  .custom-enquiry-table th:first-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; }
+  .custom-enquiry-table th:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
+
+  .custom-enquiry-table td {
+    padding: 16px;
+    font-size: 14px;
+    color: #334155;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .custom-enquiry-table tbody tr:hover {
+    background-color: #f8fafc;
+  }
+
+  @media (max-width: 768px) {
+    .page-header-banner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+  }
+</style>
+
+<div class="enquiry-page-container">
+  <div class="max-width-holder">
+
+    <!-- Top Banner -->
+    <div class="page-header-banner">
+      <div>
+        <h1 style="margin:0; font-size: 26px; font-weight:700;">Enquiry Management</h1>
+        <p style="margin: 4px 0 0; font-size:13px; opacity:0.9;">Manage and resolve customer enquiries efficiently</p>
+      </div>
+      <a href="/admin/admindashboard" style="background: rgba(255,255,255,0.2); color:#fff; padding:10px 20px; border-radius:25px; text-decoration:none; font-size:13px; font-weight:600; border: 1px solid rgba(255,255,255,0.3);">← Back to Dashboard</a>
+    </div>
+
+    <!-- Stats Cards Section (Dynamic Enquiries Count Applied) -->
+    <div class="stats-grid">
+      <div class="stat-card" style="background-color: #3b82f6;">
+        <!-- Dynamic Total Enquiries Count -->
+        <div class="stat-number" th:text="${enq != null ? #lists.size(enq) : 0}">0</div>
+        <p class="stat-label">Total Enquiries</p>
+      </div>
+      <div class="stat-card" style="background-color: #f59e0b;">
+        <div class="stat-number">0</div>
+        <p class="stat-label">Pending Requests</p>
+      </div>
+      <div class="stat-card" style="background-color: #10b981;">
+        <div class="stat-number">0</div>
+        <p class="stat-label">Resolved Requests</p>
+      </div>
+      <div class="stat-card" style="background-color: #8b5cf6;">
+        <!-- Dynamic Support Requests Count -->
+        <div class="stat-number" th:text="${enq != null ? #lists.size(enq) : 0}">0</div>
+        <p class="stat-label">Support Requests</p>
+      </div>
+    </div>
+
+    <!-- Main Table Section -->
+    <div class="table-card">
+      <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 0 0 20px 0;">View Enquiries</h2>
+      <div th:if="${msg}">
+      <p th:text="${msg}" style="color:red;text-align:cenetr;"></p>
+      
+      </div>
+      
+      <div class="table-responsive-wrapper">
+        <table class="custom-enquiry-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Contact No</th>
+              <th>Email</th>
+              <th>Enquiry Text</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="e : ${enq}">
+              <td th:text="${e.id}"></td>
+               <td th:text="${e.name}"></td>
+              <td th:text="${e.address}"></td>
+              <td th:text="${e.contactno}"></td>
+              <td th:text="${e.emailaddress}"></td>
+              <td th:text="${e.enquirytext}"></td>
+              <td>
+              <a th:href="@{/admin/deleteenq(id=${e.id})}" class="btn btn-danger btn-sm">
+                  Delete         
+              </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+ </main>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

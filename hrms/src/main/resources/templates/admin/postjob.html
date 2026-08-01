@@ -1,0 +1,336 @@
+<html lang="en" th:replace="~{admin/adminbase :: layout(~{::main})}">
+<body>
+ <main style="width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important;">
+
+<!-- Internal CSS -->
+<style>
+  .job-page-container {
+    padding: 30px 20px;
+    background-color: #f8fafc;
+    min-height: 90vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .max-width-holder {
+    max-width: 1150px;
+    margin: 0 auto;
+  }
+
+  /* Top Gradient Banner */
+  .page-header-banner {
+    background: #4f46e5;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: #ffffff;
+    padding: 24px 30px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 20px rgba(124, 58, 237, 0.15);
+  }
+
+  /* Top Stats Cards with Hover Effects */
+  .stats-grid {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    flex: 1;
+    min-width: 200px;
+    padding: 20px 24px;
+    border-radius: 16px;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  /* Card Hover Animations */
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .stat-icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .stat-number {
+    font-size: 30px;
+    font-weight: 800;
+    margin: 0 0 2px 0;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .stat-pill {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.25);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  /* Form Container Card */
+  .form-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .form-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .form-card-header {
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+
+  /* Input Field Styling */
+  .form-group-item {
+    margin-bottom: 20px;
+  }
+
+  .form-label-custom {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 8px;
+  }
+
+  .input-control-custom {
+    width: 100%;
+    height: 44px;
+    padding: 0 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #0f172a;
+    background-color: #f8fafc;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+  }
+
+  textarea.input-control-custom {
+    height: 100px;
+    padding: 12px 16px;
+    resize: vertical;
+  }
+
+  /* Input Hover & Focus */
+  .input-control-custom:hover {
+    border-color: #94a3b8;
+    background-color: #ffffff;
+  }
+
+  .input-control-custom:focus {
+    border-color: #4f46e5;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+  }
+
+  /* Submit Button with Gradient Hover */
+  .btn-submit-job {
+    width: 100%;
+    height: 48px;
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+    transition: all 0.25s ease;
+  }
+
+  .btn-submit-job:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(37, 99, 235, 0.45);
+    opacity: 0.95;
+  }
+
+  .btn-submit-job:active {
+    transform: translateY(0);
+  }
+
+  /* Success Message Alert */
+  .msg-alert-box {
+    background-color: #f0fdf4;
+    border: 1px solid #86efac;
+    color: #166534;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .page-header-banner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+    .form-card {
+      padding: 20px;
+    }
+  }
+</style>
+
+<div class="job-page-container">
+  <div class="max-width-holder">
+
+    <!-- Header Banner -->
+    <div class="page-header-banner">
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div style="background: rgba(255,255,255,0.2); width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px;">💼</div>
+        <div>
+          <h1 style="margin:0; font-size: 26px; font-weight:700;">Job Management</h1>
+          <p style="margin: 4px 0 0; font-size:13px; opacity:0.9;">Create, update and manage job openings</p>
+        </div>
+      </div>
+      <a href="/admin/admindashboard" style="background: rgba(255,255,255,0.2); color:#fff; padding:10px 20px; border-radius:25px; text-decoration:none; font-size:13px; font-weight:600; border: 1px solid rgba(255,255,255,0.3);">← Dashboard</a>
+    </div>
+
+    <!-- Stats Cards Grid with Hover Effects -->
+   <!-- Stats Cards Grid with Dynamic Counts & Hover Effects -->
+   <!-- Stats Cards Grid with Dynamic Database Counts -->
+    <div class="stats-grid">
+      
+      <!-- Total Jobs -->
+      <div class="stat-card" style="background-color: #3b82f6;">
+        <div class="stat-icon">💼</div>
+        <div class="stat-number" th:text="${totalJobs != null ? totalJobs : (jobs != null ? #lists.size(jobs) : 0)}">0</div>
+        <div class="stat-label">Total Jobs</div>
+        <span class="stat-pill">All Listings</span>
+      </div>
+
+      <!-- Active Jobs -->
+      <div class="stat-card" style="background-color: #10b981;">
+        <div class="stat-icon">✓</div>
+        <div class="stat-number" th:text="${activeJobs != null ? activeJobs : (jobs != null ? #lists.size(jobs) : 0)}">0</div>
+        <div class="stat-label">Active Jobs</div>
+        <span class="stat-pill">Open Roles</span>
+      </div>
+
+      <!-- Open Vacancies -->
+      <div class="stat-card" style="background-color: #8b5cf6;">
+        <div class="stat-icon">👥</div>
+        <div class="stat-number" th:text="${totalVacancies != null ? totalVacancies : 0}">0</div>
+        <div class="stat-label">Open Vacancies</div>
+        <span class="stat-pill">Total Seats</span>
+      </div>
+
+      <!-- Pipeline/Others -->
+      <div class="stat-card" style="background-color: #f59e0b;">
+        <div class="stat-icon">📈</div>
+        <div class="stat-number" th:text="${pipeline != null ? pipeline : 0}">0</div>
+        <div class="stat-label">Recruitment Pipeline</div>
+        <span class="stat-pill">Recent Posts</span>
+      </div>
+
+    </div>
+
+    <!-- Main Job Form Card -->
+    <div class="form-card">
+      <div class="form-card-header">
+        <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 0;">📝 Post Job Details</h2>
+      </div>
+
+      <!-- Success Message Alert -->
+      <div th:if="${msg}" class="msg-alert-box">
+        <p th:text="${msg}" style="margin:0;"></p>
+      </div>
+
+      <!-- Spring Boot Form (Exact original bindings preserved) -->
+      <form method="post" th:object="${jdto}">
+        
+        <!-- Job Title -->
+        <div class="form-group-item">
+          <label class="form-label-custom">Enter job title</label>
+          <input type="text" th:field="${jdto.title}" class="input-control-custom" required placeholder="e.g. Java Developer" />
+        </div>
+
+        <!-- Description -->
+        <div class="form-group-item">
+          <label class="form-label-custom">Enter Description</label>
+          <textarea th:field="${jdto.description}" class="input-control-custom" required placeholder="Describe the job roles and responsibilities..."></textarea>
+        </div>
+
+        <!-- Location -->
+        <div class="form-group-item">
+          <label class="form-label-custom">Enter Location</label>
+          <input type="text" th:field="${jdto.location}" class="input-control-custom" required placeholder="e.g. Lucknow, Remote" />
+        </div>
+
+        <!-- Salary -->
+        <div class="form-group-item">
+          <label class="form-label-custom">Enter Salary</label>
+          <input type="number" th:field="${jdto.salary}" class="input-control-custom" required placeholder="e.g. 50000" />
+        </div>
+
+        <!-- Job Type -->
+        <div class="form-group-item">
+          <label class="form-label-custom">Select job type</label>
+          <select th:field="${jdto.jobtype}" class="input-control-custom">
+            <option value="fulltime">Full time</option>
+            <option value="parttime">part time</option>
+            <option value="internship">Internship</option>
+          </select>
+        </div>
+
+        <!-- Last Date -->
+        <div class="form-group-item" style="margin-bottom: 28px;">
+          <label class="form-label-custom">Enter Last Date</label>
+          <input type="date" th:field="${jdto.lastdate}" class="input-control-custom" required />
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit-job">Submit Job Opening ➔</button>
+
+      </form>
+    </div>
+
+  </div>
+</div>
+
+ </main>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 	

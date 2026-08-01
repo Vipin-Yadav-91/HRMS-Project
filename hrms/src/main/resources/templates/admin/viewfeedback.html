@@ -1,0 +1,232 @@
+<!-- <html lang="en" th:replace="~{admin/adminbase :: layout(~{::main})}">
+<body>
+ <main>
+ 	<h1>View all feedbacks</h1>
+ 	<hr/>
+ 	<table class="table table-bordered" style="margin:auto;width:90%;">
+ 	<tr>
+ 	<th>Id</th>
+ 	<th>Name</th>
+ 	<th>Contactno</th>
+ 	<th>Subject</th>
+ 	<th>Subject</th>
+ 	<th>Posted Date</th>
+ 	</tr>
+ 	<tr th:each="f:${feed}">
+ 	<td th:text="${f.id}"></td>
+ 	 	<td th:text="${f.name}"></td>
+ 	 	<td th:text="${f.contactno}"></td>
+ 	 	<td th:text="${f.subject}"></td>
+ 	 	<td th:text="${f.responsetext}"></td>
+ 	 	<td th:text="${f.postdate}"></td>
+ 	</tr>
+ 	
+ 	</table>
+ </main>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+<html lang="en" th:replace="~{admin/adminbase :: layout(~{::main})}">
+<body>
+ <main class="py-3">
+  <!-- Font Awesome CDN (Icons load karne ke liye) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* Gradient Backgrounds */
+    .bg-gradient-banner {
+      background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #8b5cf6 100%);
+    }
+    .card-stat-1 { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+    .card-stat-2 { background: linear-gradient(135deg, #8b5cf6, #6366f1); }
+    .card-stat-3 { background: linear-gradient(135deg, #10b981, #059669); }
+    .card-stat-4 { background: linear-gradient(135deg, #f97316, #ea580c); }
+
+    /* Table Header Style */
+    .table-header-custom {
+      background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+      color: #ffffff !important;
+    }
+  </style>
+
+  <div class="container-fluid px-4" style="max-width: 1200px;">
+    
+    <!-- Top Header Banner -->
+    <div class="card bg-gradient-banner text-white border-0 rounded-2 shadow-sm mb-4">
+      <div class="card-body p-4 d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-3">
+          <div class="bg-white bg-opacity-20 rounded-2 p-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+            <i class="fa-solid fa-comments fs-3 text-success"></i>
+          </div>
+          <div>
+            <h2 class="h4 fw-bold mb-1">Feedback List</h2>
+            <p class="mb-0 text-white-50 small">Review employee feedback and suggestions</p>
+          </div>
+        </div>
+        <div>
+          <a href="/admin/admindashboard" class="btn btn-light bg-opacity-20 text-success border-0 rounded-2 px-3 py-2 fw-semibold small">
+            <i class="fa-solid fa-arrow-left me-1"></i> Back to Dashboard
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Cards Row (rounded-2) -->
+    <div class="row g-3 mb-4">
+      <div class="col-md-3">
+        <div class="card card-stat-1 text-white border-0 rounded-2 p-3 shadow-sm">
+          <div class="mb-2">
+            <i class="fa-solid fa-layer-group fs-5 opacity-75"></i>
+          </div>
+          <h3 class="fw-bold mb-0 fs-2">1</h3>
+          <p class="small text-white-50 text-uppercase fw-semibold mb-2" style="font-size: 10px;">Total Feedback</p>
+          <span class="badge bg-white text-primary rounded-2 align-self-start px-2 py-1" style="font-size: 10px;">All Records</span>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card card-stat-2 text-white border-0 rounded-2 p-3 shadow-sm">
+          <div class="mb-2">
+            <i class="fa-solid fa-lightbulb fs-5 opacity-75"></i>
+          </div>
+          <h3 class="fw-bold mb-0 fs-2">1</h3>
+          <p class="small text-white-50 text-uppercase fw-semibold mb-2" style="font-size: 10px;">Employee Suggestions</p>
+          <span class="badge bg-white text-indigo rounded-2 align-self-start px-2 py-1" style="font-size: 10px; color: #6366f1;">Suggestions</span>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card card-stat-3 text-white border-0 rounded-2 p-3 shadow-sm">
+          <div class="mb-2">
+            <i class="fa-solid fa-clock-rotate-left fs-5 opacity-75"></i>
+          </div>
+          <h3 class="fw-bold mb-0 fs-2">0</h3>
+          <p class="small text-white-50 text-uppercase fw-semibold mb-2" style="font-size: 10px;">Recent Feedback</p>
+          <span class="badge bg-white text-success rounded-2 align-self-start px-2 py-1" style="font-size: 10px;">Last 30 Days</span>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card card-stat-4 text-white border-0 rounded-2 p-3 shadow-sm">
+          <div class="mb-2">
+            <i class="fa-solid fa-shield-halved fs-5 opacity-75"></i>
+          </div>
+          <h3 class="fw-bold mb-0 fs-2">Active</h3>
+          <p class="small text-white-50 text-uppercase fw-semibold mb-2" style="font-size: 10px;">HR Review</p>
+          <span class="badge bg-white text-warning rounded-2 align-self-start px-2 py-1" style="font-size: 10px;">In Progress</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table Card Container (rounded-2) -->
+    <div class="card border-0 shadow-sm rounded-2 overflow-hidden mb-4">
+      
+      <!-- Card Header -->
+      <div class="card-header bg-white p-3 px-4 d-flex justify-content-between align-items-center border-bottom">
+        <div class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-list-check text-primary fs-5"></i>
+          <div>
+            <h5 class="fw-bold mb-0 text-dark" style="font-size: 16px;">Feedback Records</h5>
+            <span class="text-muted small" style="font-size: 12px;">All submitted employee feedback entries</span>
+          </div>
+        </div>
+        <span class="badge bg-primary rounded-2 px-3 py-2 fw-semibold">1 Record</span>
+      </div>
+
+      <!-- Search & Controls Bar -->
+      <div class="px-4 py-2 bg-light border-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div class="d-flex align-items-center gap-2 text-muted small">
+          <span>Show</span>
+          <select class="form-select form-select-sm rounded-2" style="width: 70px;">
+            <option>10</option>
+            <option>25</option>
+            <option>50</option>
+          </select>
+          <span>entries</span>
+        </div>
+        <div>
+          <div class="input-group input-group-sm border rounded-2 px-2 py-1 bg-white align-items-center">
+            <i class="fa-solid fa-magnifying-glass text-muted me-2"></i>
+            <input type="text" class="form-control border-0 p-0 shadow-none" placeholder="Search feedback..." style="font-size: 13px; width: 180px;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Thymeleaf Dynamic Data Table -->
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead>
+            <tr class="table-header-custom text-uppercase small" style="font-size: 11px; letter-spacing: 0.5px;">
+              <th class="py-3 px-4"><i class="fa-solid fa-hashtag me-1"></i> ID</th>
+              <th class="py-3"><i class="fa-solid fa-user me-1"></i> NAME</th>
+              <th class="py-3"><i class="fa-solid fa-phone me-1"></i> CONTACTNO</th>
+              <th class="py-3"><i class="fa-solid fa-envelope me-1"></i> SUBJECT</th>
+              <th class="py-3"><i class="fa-solid fa-comment-dots me-1"></i> RESPONSE TEXT</th>
+              <th class="py-3 px-4"><i class="fa-solid fa-calendar-days me-1"></i> POSTED DATE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="f:${feed}">
+              <!-- ID -->
+              <td class="px-4">
+                <span class="badge bg-light text-primary border rounded-2 px-3 py-2 fw-bold" th:text="${f.id}"></span>
+              </td>
+              
+              <!-- Name with Circle Avatar Icon -->
+              <td>
+                <div class="d-flex align-items-center gap-2">
+                  <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 30px; height: 30px; font-size: 12px;">
+                    <i class="fa-solid fa-user"></i>
+                  </div>
+                  <span class="fw-bold text-dark" th:text="${f.name}"></span>
+                </div>
+              </td>
+              
+              <!-- Contact Number -->
+              <td>
+                <span class="badge bg-success bg-opacity-10 text-success rounded-2 px-3 py-2 fw-medium" th:text="${f.contactno}"></span>
+              </td>
+              
+              <!-- Subject -->
+              <td>
+                <span class="text-secondary fw-semibold" th:text="${f.subject}"></span>
+              </td>
+              
+              <!-- Response Text -->
+              <td>
+                <span class="text-dark fw-medium" th:text="${f.responsetext}"></span>
+              </td>
+              
+              <!-- Posted Date -->
+              <td class="px-4">
+                <span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 rounded-2 px-3 py-2 fw-semibold" th:text="${f.postdate}"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination Footer -->
+      <div class="card-footer bg-white p-3 px-4 border-top d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <span class="text-muted small">Showing 1 to 1 of 1 entries</span>
+        <div class="d-flex gap-1">
+          <button class="btn btn-sm btn-light border rounded-2 px-2 disabled"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="btn btn-sm btn-primary rounded-2 px-3 fw-bold">1</button>
+          <button class="btn btn-sm btn-light border rounded-2 px-2 disabled"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+ </main>
+</body>
+</html>

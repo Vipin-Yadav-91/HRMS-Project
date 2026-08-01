@@ -1,0 +1,136 @@
+<!-- <html lang="en" th:replace="~{user/userbase :: layout(~{::main})}">
+<body>
+ <main>
+ 	<h2 style="text-align:center;color:green;">Submit Your Feedback/Complaint</h2>
+ 	<div th:if="${msg}">
+ 	<p th:text="${msg}" style="color:green; text-align:center"></p>
+ 	</div>
+ 	<form class="form-group" method="post" th:object="${rdto}">
+ 	<table class="table table-bordered" style="margin:auto; width:50%">
+ 	<tr>
+ 	<td>Select response type</td>
+ 	<td>
+ 	<select class="form-control" th:field="${rdto.responsetype}">
+ 	<option value="feedback">Feedback</option>
+ 	<option value="complaint">Complaint</option>
+ 	
+ 	</select>
+ 	</td>
+ 	</tr>
+ 	<tr>
+ 	<td>Enter Subject</td>
+ 	<td>
+ 	<input type="text" th:field="${rdto.subject}" class="form-control" required/>
+ 	</td>
+ 	</tr>
+ 	<tr>
+ 	<td>Enter Message</td>
+ 	<td>
+ 	<textarea th:field="${rdto.responsetext}" required class="form-control"></textarea>
+ 	</td>
+ 	</tr>
+ 	<tr>
+ 	<td></td>
+ 	<td>
+ 	<button type="submit" class="btn btn-success">Submit</button>
+ 	</td>
+ 	</tr>
+ 	</table>
+ 	</form>
+ </main>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en" th:replace="~{user/userbase :: layout(~{::main})}">
+<body>
+ <main class="py-4">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* Gradient Top Banner */
+    .bg-gradient-header {
+      background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+    }
+  </style>
+
+  <div class="container" style="max-width: 650px;">
+    
+    <!-- Success Message Alert Box -->
+    <div th:if="${msg}" class="alert alert-success alert-dismissible fade show rounded-2 mb-3 text-center shadow-sm" role="alert">
+      <i class="fa-solid fa-circle-check me-2"></i>
+      <span th:text="${msg}"></span>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <!-- Main Card Container -->
+    <div class="card border-0 shadow-lg rounded-2 overflow-hidden">
+      
+      <!-- Card Header -->
+      <div class="card-header bg-gradient-header text-white p-4 text-center border-0">
+        <div class="bg-white bg-opacity-20 rounded-2 d-inline-flex align-items-center justify-content-center mb-2" style="width: 50px; height: 50px;">
+          <i class="fa-solid fa-paper-plane fs-4 text-primary"></i>
+        </div>
+        <h2 class="h4 fw-bold mb-1 text-white">Submit Your Feedback/Complaint</h2>
+        <p class="mb-0 text-white-50 small">We value your response to help us improve our services</p>
+      </div>
+
+      <!-- Form Body -->
+      <div class="card-body p-4 bg-white">
+        <form method="post" th:object="${rdto}">
+          
+          <!-- Select Response Type -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold text-dark small"><i class="fa-solid fa-list-check me-1 text-success"></i> Select Response Type</label>
+            <select class="form-select rounded-2 py-2" th:field="${rdto.responsetype}">
+              <option value="feedback">Feedback</option>
+              <option value="complaint">Complaint</option>
+            </select>
+          </div>
+
+          <!-- Enter Subject -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold text-dark small"><i class="fa-solid fa-pen-nib me-1 text-success"></i> Enter Subject</label>
+            <input type="text" th:field="${rdto.subject}" class="form-control rounded-2 py-2" placeholder="Write a short title/subject..." required/>
+          </div>
+
+          <!-- Enter Message -->
+          <div class="mb-4">
+            <label class="form-label fw-semibold text-dark small"><i class="fa-solid fa-message me-1 text-success"></i> Enter Message</label>
+            <textarea th:field="${rdto.responsetext}" required class="form-control rounded-2" rows="4" placeholder="Type your feedback or complaint details here..."></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="d-grid">
+            <button type="submit" class="btn btn-success rounded-2 py-2 fw-bold text-uppercase fs-6 shadow-sm">
+              <i class="fa-solid fa-paper-plane me-2"></i> Submit Response
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+ </main>
+</body>
+</html>

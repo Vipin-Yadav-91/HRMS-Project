@@ -1,0 +1,194 @@
+/* Container & Backgrounds */
+.enquiry-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  padding: 60px 20px 100px;
+  text-align: center;
+}
+
+.hero-tag {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fbbf24;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.hero-title {
+  font-size: 38px;
+  font-weight: 700;
+  margin: 18px 0 10px;
+}
+
+.hero-title span {
+  color: #f59e0b;
+}
+
+.hero-desc {
+  color: #94a3b8;
+  font-size: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Card Section */
+.enquiry-card-wrapper {
+  max-width: 1100px;
+  margin: -60px auto 60px;
+  padding: 0 20px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* Left Contact Info Panel */
+.contact-info-card {
+  flex: 1;
+  min-width: 300px;
+  background: #1e293b;
+  color: #ffffff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.info-icon {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.info-text h5 {
+  margin: 0 0 3px;
+  font-size: 12px;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+.info-text p {
+  margin: 0;
+  font-size: 14px;
+  color: #f1f5f9;
+}
+
+/* Right Form Section */
+.enquiry-form-card {
+  flex: 1.5;
+  min-width: 320px;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.form-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 6px;
+}
+
+.form-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+/* Form Inputs */
+.form-field-group {
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.input-icon-box {
+  position: relative;
+}
+
+.input-icon-box i {
+  position: absolute;
+  left: 14px;
+  top: 15px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.custom-form-input, 
+.custom-form-textarea {
+  width: 100%;
+  padding: 12px 14px 12px 40px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #f8fafc;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s;
+}
+
+.custom-form-textarea {
+  height: 90px;
+  resize: vertical;
+}
+
+.custom-form-input:focus, 
+.custom-form-textarea:focus {
+  border-color: #f59e0b;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+/* Submit Button */
+.btn-submit-enquiry {
+  background: #f59e0b;
+  color: #ffffff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-submit-enquiry:hover {
+  background: #d97706;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+/* Alert Message */
+.msg-alert {
+  background: #ecfdf5;
+  border: 1px solid #6ee7b7;
+  color: #065f46;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .enquiry-card-wrapper {
+    flex-direction: column;
+    margin-top: -30px;
+  }
+  .hero-title {
+    font-size: 28px;
+  }
+}
