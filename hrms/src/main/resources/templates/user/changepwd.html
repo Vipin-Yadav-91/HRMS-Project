@@ -43,8 +43,12 @@
 
 
 
-
-<html lang="en" th:replace="~{user/userbase :: layout(~{::main})}">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{admin/adminbase :: layout(~{::main})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Change Admin Password</title>
+</head>
 <body>
  <main class="container py-4">
 
@@ -59,9 +63,8 @@
             padding: 30px 20px;
             box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
             text-align: center;
-            width:650px;
-            margin-left:107px;
-            margin-top:10px;
+            max-width: 650px;
+            margin: 10px auto 0 auto;
         }
 
         .banner-icon {
@@ -141,24 +144,23 @@
         }
     </style>
 
-    <!-- Top Banner Header (Centered & Larger Text) -->
+    <!-- Top Banner Header -->
     <div class="page-banner mb-4">
         <div class="banner-icon">
             <i class="fa-solid fa-shield-halved fs-3 text-white"></i>
         </div>
-        <h2 class="fw-bold text-white mb-2" style="font-size: 2.1rem; letter-spacing: -0.5px;">Change User Password</h2>
+        <h2 class="fw-bold text-white mb-2" style="font-size: 2.1rem; letter-spacing: -0.5px;">Change Admin Password</h2>
         <p class="text-white-50 m-0" style="font-size: 1.1rem; font-weight: 400;">Manage and update your account credentials</p>
     </div>
 
     <!-- Main Form Container -->
     <div class="content-card">
         
-        <!-- Aapka Original Message Code (Bina kisi change ke) -->
         <div th:if="${msg}">
             <p style="color:red;text-align:center;font-weight:500;" th:text="${msg}"></p>
         </div>
 
-        <form method="post" action="/user/changepwd">
+        <form method="post" th:action="@{/admin/changepwd}">
             <table class="form-table border-0">
                 <tr>
                     <td class="form-label-text" style="width: 38%;">Enter Old Password</td>
