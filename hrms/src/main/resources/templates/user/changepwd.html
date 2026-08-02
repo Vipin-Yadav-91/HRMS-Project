@@ -42,7 +42,11 @@
 
 
 
-<main class="container py-4" th:replace="~{admin/adminbase :: layout(~{::main})}">
+
+
+<html lang="en" th:replace="~{user/userbase :: layout(~{::main})}">
+<body>
+ <main class="container py-4">
 
     <!-- FontAwesome & Custom Styling inside <main> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -55,8 +59,9 @@
             padding: 30px 20px;
             box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
             text-align: center;
-            max-width: 650px;
-            margin: 10px auto 0 auto;
+            width:650px;
+            margin-left:107px;
+            margin-top:10px;
         }
 
         .banner-icon {
@@ -136,23 +141,24 @@
         }
     </style>
 
-    <!-- Top Banner Header -->
+    <!-- Top Banner Header (Centered & Larger Text) -->
     <div class="page-banner mb-4">
         <div class="banner-icon">
             <i class="fa-solid fa-shield-halved fs-3 text-white"></i>
         </div>
-        <h2 class="fw-bold text-white mb-2" style="font-size: 2.1rem; letter-spacing: -0.5px;">Change Admin Password</h2>
+        <h2 class="fw-bold text-white mb-2" style="font-size: 2.1rem; letter-spacing: -0.5px;">Change User Password</h2>
         <p class="text-white-50 m-0" style="font-size: 1.1rem; font-weight: 400;">Manage and update your account credentials</p>
     </div>
 
     <!-- Main Form Container -->
     <div class="content-card">
         
+        <!-- Aapka Original Message Code (Bina kisi change ke) -->
         <div th:if="${msg}">
             <p style="color:red;text-align:center;font-weight:500;" th:text="${msg}"></p>
         </div>
 
-        <form method="post" th:action="@{/admin/changepwd}">
+        <form method="post" action="/user/changepwd">
             <table class="form-table border-0">
                 <tr>
                     <td class="form-label-text" style="width: 38%;">Enter Old Password</td>
@@ -182,4 +188,6 @@
         </form>
     </div>
 
-</main>
+ </main>
+</body>
+</html>
