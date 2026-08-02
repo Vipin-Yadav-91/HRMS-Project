@@ -45,13 +45,13 @@ public class MainController {
 	}
 	@GetMapping("/jobspage")
 	public String showJobsPage() {
-		return "/jobspage";
+		return "jobspage";
 	}
 	
 
 @GetMapping("/joinuspage")
 public String showJoinUsPage() {
-	return "/joinuspage";
+	return "joinuspage";
 }
 	
 	@GetMapping("/registration")

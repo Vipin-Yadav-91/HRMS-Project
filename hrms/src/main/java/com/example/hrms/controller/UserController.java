@@ -51,7 +51,7 @@ public class UserController {
 		}
 		List<JobInfo> jinfo=jrepo.findAll();
 		model.addAttribute("jinfo",jinfo);
-		return "/user/viewjobs";
+		return "user/viewjobs";
 	}
 	@GetMapping("/user/changepwd")
 	public String changepwd(HttpSession session) {
@@ -132,7 +132,7 @@ public class UserController {
 		}
 		User user=(User) session.getAttribute("user");
 		model.addAttribute("user", user);
-		return "/user/viewprofile";
+		return "user/viewprofile";
 	}
 	@GetMapping("/user/applyjob/{id}")
 	public String applyJob(@PathVariable("id") int id, HttpSession session, RedirectAttributes attrib) {

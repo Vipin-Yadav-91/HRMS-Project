@@ -181,7 +181,7 @@ public class AdminController {
 		}
 		List<Response> feed=rrepo.findByResponsetype("feedback");
 		model.addAttribute("feed", feed);
-		return "/admin/viewfeedback";
+		return "admin/viewfeedback";
 	}
 	@GetMapping("/admin/viewcomplaint")
 	public String viewComplaint(Model model, HttpSession session) {
@@ -190,12 +190,12 @@ public class AdminController {
 		}
 		List<Response> comp=rrepo.findByResponsetype("complaint");
 		model.addAttribute("comp", comp);
-		return "/admin/viewcomplaint";
+		return "admin/viewcomplaint";
 	}
 	@GetMapping("/admin/deleteenq")
 	public String deleteEnquiry(HttpSession session, @RequestParam int id, RedirectAttributes attrib) {
 		if(session.getAttribute("admin")==null) {
-			return "rediret:/adminlogin";
+			return "redircet:/adminlogin";
 		}
 		Enquiry e=erepo.findById(id).get();
 		erepo.delete(e);
@@ -246,7 +246,7 @@ public class AdminController {
 		}
 		List<AppliedJob> aj=ajrepo.findAll();
 		model.addAttribute("aj" , aj);		
-		return "/admin/appliedjobs";
+		return "admin/appliedjobs";
 	}
 }
 
